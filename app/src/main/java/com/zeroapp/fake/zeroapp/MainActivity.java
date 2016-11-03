@@ -2,6 +2,7 @@ package com.zeroapp.fake.zeroapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 layout.setBackgroundColor(getResources().getColor(R.color.backgroundcolor1));;
                 label.setTextColor(getResources().getColor(R.color.labelcolor1));
+                label.setGravity(Gravity.CENTER);
             }
         });
 
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 layout.setBackgroundColor(getResources().getColor(R.color.backgroundcolor2));;
                 label.setTextColor(getResources().getColor(R.color.labelcolor2));
+                label.setGravity(Gravity.RIGHT);
             }
         });
 
