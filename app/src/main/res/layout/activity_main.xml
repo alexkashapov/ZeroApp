@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    tools:context="com.zeroapp.fake.zeroapp.MainActivity"
+    android:id="@+id/layout"
+    android:background="@color/backgroundcolor1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        android:textColor="@color/labelcolor1"
+        android:textSize="100dp"
+        android:gravity="center"
+        android:layout_marginTop="100dp"
+        android:id="@+id/label"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1style"
+        android:id="@+id/fstylebt"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2style"
+        android:id="@+id/sstylebt"
+        android:layout_toRightOf="@id/fstylebt"
+        android:layout_marginTop="25dp"/>
+
+</RelativeLayout>
