@@ -33,5 +33,4 @@
         android:layout_toRightOf="@id/fstylebt"
         android:layout_marginTop="25dp"/>
 
-
 </RelativeLayout>
