@@ -1,0 +1,82 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.firstapp.fake.firstapp.AddItemDialog">
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose color:" />
+
+    <LinearLayout
+        android:id="@+id/layouto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/circleRed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text"
+            android:padding="8dp"
+            android:src="@drawable/s_circle" />
+
+        <ImageView
+            android:id="@+id/circleOrange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:src="@drawable/s_circle" />
+
+
+        <ImageView
+            android:id="@+id/circleYellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:src="@drawable/s_circle" />
+
+        <ImageView
+            android:id="@+id/circleGreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:src="@drawable/s_circle" />
+
+        <ImageView
+            android:id="@+id/circleBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:src="@drawable/s_circle" />
+
+        <ImageView
+            android:id="@+id/circleDarkBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:src="@drawable/s_circle" />
+
+        <ImageView
+            android:id="@+id/circleViolet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:src="@drawable/s_circle" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layouto"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="16dp"
+        android:text="ok" />
+
+</RelativeLayout>

@@ -11,4 +11,6 @@
     <color name="blue">#00effc</color>
     <color name="dark_blue">#002ec6</color>
     <color name="violet">#8c00dd</color>
+
+    <color name="white">#ffffff</color>
 </resources>
