@@ -4,9 +4,11 @@ import android.app.DialogFragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +20,7 @@ import android.graphics.PorterDuff.Mode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements AddItemDialog.OnDialogCallback{
+public class MainActivity extends AppCompatActivity implements OnDialogCallback{
 
     private RecyclerView recycler;
     private LinearLayoutManager llm;
@@ -36,11 +38,19 @@ public class MainActivity extends AppCompatActivity implements AddItemDialog.OnD
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
 
-        adapter = new RecyclerAdapter();
+        if(savedInstanceState==null){
+            adapter = new RecyclerAdapter();
+            initializeData();
+            adapter.addAll(notes);
+        }
+        else adapter = (RecyclerAdapter) getLastCustomNonConfigurationInstance();
         recycler.setAdapter(adapter);
 
-        initializeData();
-        adapter.addAll(notes);
+        ItemTouchHelper.Callback callback = new SwipeHelper(adapter);
+        ItemTouchHelper helper = new ItemTouchHelper(callback);
+        helper.attachToRecyclerView(recycler);
+
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,31 +61,38 @@ public class MainActivity extends AppCompatActivity implements AddItemDialog.OnD
         });
     }
 
+    @Override
+    public Object onRetainCustomNonConfigurationInstance() {
+        return adapter;
+    }
+
+
+
     private void initializeData() {
         notes = new ArrayList<>();
         for (int i = 1; i <= 50; i++) {
 
                 switch (i%7) {
                     case 1:
-                        notes.add(new Note(i, R.color.red));
+                        notes.add(new Note("Element "+i, R.color.red));
                         break;
                     case 2:
-                        notes.add(new Note(i, R.color.orange));
+                        notes.add(new Note("Element "+i, R.color.orange));
                         break;
                     case 3:
-                        notes.add(new Note(i, R.color.yellow));
+                        notes.add(new Note("Element "+i, R.color.yellow));
                         break;
                     case 4:
-                        notes.add(new Note(i, R.color.green));
+                        notes.add(new Note("Element "+i, R.color.green));
                         break;
                     case 5:
-                        notes.add(new Note(i, R.color.blue));
+                        notes.add(new Note("Element "+i, R.color.blue));
                         break;
                     case 6:
-                        notes.add(new Note(i, R.color.dark_blue));
+                        notes.add(new Note("Element "+i, R.color.dark_blue));
                         break;
                     case 0:
-                        notes.add(new Note(i, R.color.violet));
+                        notes.add(new Note("Element "+i, R.color.violet));
                         break;
                 }
         }
@@ -83,6 +100,15 @@ public class MainActivity extends AppCompatActivity implements AddItemDialog.OnD
 
     @Override
     public void onButtonClick(Note note) {
-        adapter.addItem(new Note(adapter.getItemCount()+1,note.getColor()));
+        boolean flag = false;
+        ArrayList<Note> elements = new ArrayList<>(adapter.getElements());
+        for (int i = 0; i < elements.size(); i++) {
+            if(note.getTitle().equals(elements.get(i).getTitle())){
+                Snackbar.make(this.findViewById(android.R.id.content), "An element with this name already bexists", Snackbar.LENGTH_LONG).show();
+                flag = true;
+                RecyclerAdapter.itemCount--;
+            }
+        }
+        if(!flag)adapter.addItem(new Note(note.getTitle(),note.getColor()));
     }
 }

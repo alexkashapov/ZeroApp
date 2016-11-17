@@ -4,11 +4,37 @@
     android:layout_height="match_parent"
     tools:context="com.firstapp.fake.firstapp.AddItemDialog">
 
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Set title:"
+    android:padding="8dp"
+    android:id="@+id/titletext"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:padding="8dp"
+        android:layout_toRightOf="@id/titletext"
+        android:id="@+id/noteTitle"/>
+
+
     <TextView
+        android:padding="8dp"
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose color:" />
+        android:text="Choose color: "
+        android:layout_below="@id/titletext"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/s_rectangle"
+        android:layout_toRightOf="@id/text"
+        android:id="@+id/rectancle"
+        android:layout_below="@id/titletext"
+        android:layout_alignBottom="@id/text"/>
 
     <LinearLayout
         android:id="@+id/layouto"

@@ -7,19 +7,19 @@ import android.graphics.Color;
  */
 
 public class Note {
-    private int number;
-    private int color;
+    private String title="";
+    private int color = R.color.red;
 
     public Note() {
     }
 
-    public Note(int number, int color) {
-        this.number = number;
+    public Note(String title, int color) {
+        this.title = title;
         this.color = color;
     }
 
-    public int getNumber() {
-        return number;
+    public String getTitle() {
+        return title;
     }
 
     public int getColor() {
@@ -30,7 +30,7 @@ public class Note {
         this.color = color;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

@@ -17,6 +17,7 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
 
     private ArrayList<Note> items = new ArrayList<>();
+    static int itemCount=50;
 
     public void addAll(List<Note> elements) {
         int pos = getItemCount();
@@ -27,6 +28,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
     public void addItem(Note newNote) {
         this.items.add(newNote);
         notifyItemInserted(getItemCount());
+    }
+
+    public ArrayList<Note> getElements(){
+        return new ArrayList<>(items);
     }
 
     @Override
@@ -45,6 +50,17 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         return items.size();
     }
 
+    public void dismissNote(int pos){
+        for (int i = pos; i < items.size(); i++) {
+            if(items.get(i).getTitle().equals("Element "+(i+1))){
+                items.get(i).setTitle("Element "+ i);
+            }
+        }
+        items.remove(pos);
+        itemCount--;
+        this.notifyDataSetChanged();
+    }
+
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         private TextView title;
         private ImageView image;
@@ -58,7 +74,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         public void bind(Note note) {
             int color = itemView.getContext().getResources().getColor(note.getColor());
             image.getDrawable().setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
-            title.setText("Element " + note.getNumber());
+            title.setText(note.getTitle());
         }
     }
 }
