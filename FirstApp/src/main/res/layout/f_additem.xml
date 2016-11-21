@@ -7,7 +7,7 @@
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Set title:"
+    android:text="@string/set_title"
     android:padding="8dp"
     android:id="@+id/titletext"/>
 
@@ -25,19 +25,19 @@
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose color: "
+        android:text="@string/choose_color_text"
         android:layout_below="@id/titletext"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/s_rectangle"
+        android:src="@drawable/color_rectangle"
         android:layout_toRightOf="@id/text"
         android:id="@+id/rectancle"
         android:layout_below="@id/titletext"
         android:layout_alignBottom="@id/text"/>
 
     <LinearLayout
-        android:id="@+id/layouto"
+        android:id="@+id/layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/text"
@@ -48,16 +48,15 @@
             android:id="@+id/circleRed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text"
             android:padding="8dp"
-            android:src="@drawable/s_circle" />
+            android:src="@drawable/color_circle" />
 
         <ImageView
             android:id="@+id/circleOrange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:src="@drawable/s_circle" />
+            android:src="@drawable/color_circle" />
 
 
         <ImageView
@@ -65,44 +64,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:src="@drawable/s_circle" />
+            android:src="@drawable/color_circle" />
 
         <ImageView
             android:id="@+id/circleGreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:src="@drawable/s_circle" />
+            android:src="@drawable/color_circle" />
 
         <ImageView
             android:id="@+id/circleBlue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:src="@drawable/s_circle" />
+            android:src="@drawable/color_circle" />
 
         <ImageView
             android:id="@+id/circleDarkBlue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:src="@drawable/s_circle" />
+            android:src="@drawable/color_circle" />
 
         <ImageView
             android:id="@+id/circleViolet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:src="@drawable/s_circle" />
+            android:src="@drawable/color_circle" />
     </LinearLayout>
 
     <Button
         android:id="@+id/ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layouto"
+        android:layout_below="@id/layout"
         android:layout_centerInParent="true"
         android:layout_marginEnd="16dp"
-        android:text="ok" />
+        android:text="@string/ok_button" />
 
 </RelativeLayout>

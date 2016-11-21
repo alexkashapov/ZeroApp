@@ -15,31 +15,33 @@ import android.widget.ImageView;
 
 public class AddItemDialog extends DialogFragment {
 
-    Note note;
-    OnDialogCallback odc;
+    public static final String TAG = "AddItemDialog";
+
+    private Note note;
+    private OnDialogCallback onDialogCallback;
 
     void setCallback(OnDialogCallback odc) {
-        this.odc = odc;
+        this.onDialogCallback = odc;
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.f_additem, null);
+
+        if (savedInstanceState != null) {
+            AddItemDialog.this.dismiss();
+        }
         final EditText noteTitle = (EditText) view.findViewById(R.id.noteTitle);
         note = new Note();
 
         initCircles(view);
-        Button bt_ok = (Button) view.findViewById(R.id.ok);
-        bt_ok.setOnClickListener(new View.OnClickListener() {
+        Button btnOK = (Button) view.findViewById(R.id.ok);
+        btnOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 note.setTitle(noteTitle.getText().toString());
-                if (note.getTitle().equals("")) {
-                    note.setTitle("Element " + (RecyclerAdapter.itemCount + 1));
-                    RecyclerAdapter.itemCount++;
-                }
-                odc.onButtonClick(note);
+                onDialogCallback.onButtonClick(note);
                 AddItemDialog.this.dismiss();
             }
         });

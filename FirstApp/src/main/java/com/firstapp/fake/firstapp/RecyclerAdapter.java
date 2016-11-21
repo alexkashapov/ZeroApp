@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,12 @@ import java.util.List;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
 
     private ArrayList<Note> items = new ArrayList<>();
-    static int itemCount=50;
+    OnRecyclerCallback onRecyclerCallback;
+    private String element_name_template;
+
+    public RecyclerAdapter(OnRecyclerCallback onRecyclerCallback) {
+        this.onRecyclerCallback = onRecyclerCallback;
+    }
 
     public void addAll(List<Note> elements) {
         int pos = getItemCount();
@@ -30,19 +36,26 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         notifyItemInserted(getItemCount());
     }
 
+
     public ArrayList<Note> getElements(){
         return new ArrayList<>(items);
     }
 
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.i_card, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.i_color, parent, false);
         return new RecyclerViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerViewHolder holder,int position) {
         holder.bind(items.get(position));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onRecyclerCallback.onItemClick(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -51,14 +64,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
     }
 
     public void dismissNote(int pos){
-        for (int i = pos; i < items.size(); i++) {
-            if(items.get(i).getTitle().equals("Element "+(i+1))){
-                items.get(i).setTitle("Element "+ i);
-            }
-        }
         items.remove(pos);
-        itemCount--;
         this.notifyDataSetChanged();
+    }
+    interface OnRecyclerCallback{
+        void onItemClick(int position);
     }
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {

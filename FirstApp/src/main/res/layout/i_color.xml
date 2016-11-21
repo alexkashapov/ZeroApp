@@ -24,7 +24,7 @@
             android:layout_gravity="center"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:src="@drawable/s_circle" />
+            android:src="@drawable/color_circle" />
 
         <TextView
             android:id="@+id/title"
@@ -33,7 +33,6 @@
             android:layout_gravity="center"
             android:layout_margin="16dp"
             android:paddingRight="40dp"
-            android:text="ELement n"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
     </LinearLayout>
